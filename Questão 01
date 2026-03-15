@@ -1,0 +1,28 @@
+<?php
+$aluno = readline("Digite o nome do aluno: ");
+
+//armazenando notas em array
+
+$nota[0] = readline ("Digite a primeira nota: ");
+$nota[1] = readline ("Digite a primeira nota: ");
+$nota[2] = readline ("Digite a primeira nota: ");
+
+//Média
+
+$somanota = $nota[0] + $nota[1] + $nota [2];
+
+$media = $somanota/3;
+
+if($media >= 7){
+    echo "Parabéns, aprovado!";
+}
+
+elseif ($media >= 5) {
+    echo "Precisa estudar mais, está de recuperação.";
+}
+
+elseif ($media <5){
+    echo "Não foi dessa vez, reprovado.";
+}
+
+?>
