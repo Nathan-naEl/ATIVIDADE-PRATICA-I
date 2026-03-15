@@ -1,0 +1,30 @@
+<?php
+
+$alunos = [];
+
+for ($i = 0; $i < 3; $i++) {
+    echo "Nome do aluno: ";
+    $nome = trim(fgets(STDIN));
+
+    $notas = [];
+
+    for ($j = 0; $j < 3; $j++) {
+        echo "Nota " . ($j + 1) . ": ";
+        $notas[] = floatval(trim(fgets(STDIN)));
+    }
+
+    $media = array_sum($notas) / 3;
+
+    $alunos[$nome] = $media;
+}
+
+$maior = max($alunos);
+$menor = min($alunos);
+
+$alunoMaior = array_search($maior, $alunos);
+$alunoMenor = array_search($menor, $alunos);
+
+echo "Aluno com maior média: " . $alunoMaior . PHP_EOL;
+echo "Aluno com menor média: " . $alunoMenor . PHP_EOL;
+
+?>
