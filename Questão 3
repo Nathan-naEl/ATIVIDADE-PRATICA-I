@@ -1,0 +1,58 @@
+<?php
+
+$cardapio = [
+    1 => ["produto" => "X-Burguer", "preco" => 18.00],
+    2 => ["produto" => "X-Salada", "preco" => 20.00],
+    3 => ["produto" => "Batata Frita", "preco" => 15.00],
+    4 => ["produto" => "Refrigerante", "preco" => 8.00],
+    5 => ["produto" => "Suco Natural", "preco" => 10.00]
+];
+
+echo "Nome do cliente: ";
+$cliente = trim(fgets(STDIN));
+
+echo "=== CARDAPIO ===\n";
+foreach ($cardapio as $codigo => $item) {
+    echo $codigo . " - " . $item["produto"] . " - R$ " . number_format($item["preco"],2) . "\n";
+}
+
+echo "Digite o codigo do produto: ";
+$codigo = intval(trim(fgets(STDIN)));
+
+while (!isset($cardapio[$codigo])) {
+    echo "Codigo invalido. Digite novamente: ";
+    $codigo = intval(trim(fgets(STDIN)));
+}
+
+echo "Quantidade: ";
+$qtd = intval(trim(fgets(STDIN)));
+
+while ($qtd <= 0) {
+    echo "Quantidade invalida. Digite novamente: ";
+    $qtd = intval(trim(fgets(STDIN)));
+}
+
+$produto = $cardapio[$codigo]["produto"];
+$preco = $cardapio[$codigo]["preco"];
+
+$total = $preco * $qtd;
+
+echo "Valor pago: ";
+$pago = floatval(trim(fgets(STDIN)));
+
+while ($pago < $total) {
+    echo "Valor insuficiente. Digite novamente: ";
+    $pago = floatval(trim(fgets(STDIN)));
+}
+
+$troco = $pago - $total;
+
+echo "\n=== RESUMO DO PEDIDO ===\n";
+echo "Cliente: $cliente\n";
+echo "Produto: $produto\n";
+echo "Quantidade: $qtd\n";
+echo "Total: R$ " . number_format($total,2) . "\n";
+echo "Valor pago: R$ " . number_format($pago,2) . "\n";
+echo "Troco: R$ " . number_format($troco,2) . "\n";
+
+?>
